@@ -15,8 +15,8 @@ A comprehensive web application built with Django to help users manage their per
 
 ## Technologies Used
 
-- Python 3.x
-- Django 3.x
+- Python 3.12
+- Django 5.x
 - Chart.js for data visualization
 - SQLite (default Django database)
 - HTML/CSS/JavaScript
