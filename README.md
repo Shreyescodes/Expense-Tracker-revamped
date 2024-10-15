@@ -1,4 +1,4 @@
-# Personal Finance Tracker
+# Expense Tracker
 
 A comprehensive web application built with Django to help users manage their personal finances effectively.
 
