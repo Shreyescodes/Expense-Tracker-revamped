@@ -1,0 +1,44 @@
+{% extends 'tracker/base.html' %}
+
+{% block content %}
+<h1>Budget Tracking</h1>
+<div class="row">
+    <div class="col-md-6">
+        <h2>Total Budget</h2>
+        <p>${{ budget.total_budget }}</p>
+    </div>
+    <div class="col-md-6">
+        <canvas id="budgetChart"></canvas>
+    </div>
+</div>
+
+<script>
+    var ctx = document.getElementById('budgetChart').getContext('2d');
+    var budgetChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [{% for expense in expenses_by_month %}'{{ expense.month|date:"F Y" }}',{% endfor %}],
+            datasets: [{
+                label: 'Monthly Expenses',
+                data: [{% for expense in expenses_by_month %}{{ expense.total }},{% endfor %}],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                fill: false,
+            }]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: 'Monthly Expenses'
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+{% endblock %}
